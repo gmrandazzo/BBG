@@ -1,10 +1,10 @@
 [Unit]
-Description=Ban Bad Guys service
+Description=MALEBBA service
 After=multi-user.target
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/python3 MYPATH/bbgdaemon.py
+ExecStart=/usr/bin/python3 MYPATH/malebbad.py
 Restart=always
 KillSignal=SIGQUIT
 

@@ -1,9 +1,8 @@
-# Ban Bad Guys - BBG
+# MAchine LEarning-Based BAnning 
 
-Ban Bad Guys is an ML framework that analyzes nginx access logs
+MALEBBA is an ML framework that analyzes nginx access logs
 and predicts if the user connected to the web server may have bad intentions.
-BBG then produces a log file connected with fail2ban to ban bad IP.
-
+MALEBBA then produces a log file connected with fail2ban to ban bad IP.
 
 License
 =======
@@ -27,7 +26,7 @@ Install
 
 1) Login as root: su -
 
-2) Clone the code on a directory that you want: git clone https://github.com/gmrandazzo/BBG.git
+2) Clone the code on a directory that you want: git clone https://github.com/gmrandazzo/MALEBBA.git
 
 Usage
 =====
@@ -54,18 +53,18 @@ Usage
 5) Train the model: train.py dataset.features.target.csv out_model
    Check the training results and see if classification exceed 0.90 in Precision-Recall Average Area and Accuracy score.
 
-6) Modify the path of bbgdaemon.bash by editing the DIRNAME and MODEL paths.   
+6) Modify the path of malebbadaemon.bash by editing the DIRNAME and MODEL paths.   
    If you want, you can modify also the tollerance treshold.
-   vim src/bbgdaemon.bash
+   vim src/malebbadaemon.bash
 
 7) Copy into fail2ban the filter and the jail:
-   cp src/fail2ban/filter.d/bbg.conf /etc/fail2ban/filter.d/bbg.conf
-   cp src/fail2ban/jail.d/bbg.conf /etc/fail2ban/jail.d/bbg.conf
+   cp src/fail2ban/filter.d/malebba.conf /etc/fail2ban/filter.d/bbg.conf
+   cp src/fail2ban/jail.d/malebba.conf /etc/fail2ban/jail.d/bbg.conf
    Modify the jail using your preferred parameters.
   
-8) Copy the systemd service file and modify the BBG path
-   cp src/systemd/system/bbg.service /etc/systemd/system/bbg.service
-   vim /etc/systemd/system/bbg.service
+8) Copy the systemd service file and modify the MALEBBA path
+   cp src/systemd/system/malebba.service /etc/systemd/system/bbg.service
+   vim /etc/systemd/system/malebba.service
 
 9) Install the systemd services and run it.
 

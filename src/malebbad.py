@@ -22,7 +22,7 @@ from predict import predict
 from logger import create_logger
 from logger import create_listener
 
-class BBGDaemon(object):
+class MALEBBADaemon(object):
     def __init__(self,):
         self.banned_ip_lst = []
         self.treshold=0.45
@@ -32,8 +32,8 @@ class BBGDaemon(object):
         enabled=["/var/log/nginx/gmrandazzo.access.log"] 
                 #"/var/log/nginx/gmrnxtcl.access.log"]
         listener = self.global_listener(enabled)
-        log = create_logger(app_name="BBG")
-        model, header = load_models("/home/marco/BBG/src/ARMv7_models/model_20210903/") #"/var/opt/bbg_model")
+        log = create_logger(app_name="MALEBBA")
+        model, header = load_models("/home/marco/MALEBBA/src/ARMv7_models/model_20210903/") #"/var/opt/malebba_model")
         for msg in listener:
             if "==>" in msg or len(msg) ==0:
                 continue
@@ -67,7 +67,7 @@ class BBGDaemon(object):
 
     def read_site_enabled(self,):
         enabled = []
-        p = Path("/etc/bbg/enabled/")
+        p = Path("/etc/malebba/enabled/")
         for fconf in p.glob("*/**.conf"):
             conf = self.read_conf(fconf)
             for key in conf.keys():
@@ -85,8 +85,8 @@ class BBGDaemon(object):
         return create_listener(args)
 
 def main():
-    bbgdaemon = BBGDaemon()
-    bbgdaemon.run()
+    malebbadaemon = MALEBBADaemon()
+    malebbadaemon.run()
 
 if __name__ in "__main__":
     main()
