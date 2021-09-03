@@ -1,0 +1,13 @@
+[Unit]
+Description=Ban Bad Guys service
+After=multi-user.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 MYPATH/bbgdaemon.py
+Restart=always
+KillSignal=SIGQUIT
+
+[Install]
+WantedBy=multi-user.target
+
