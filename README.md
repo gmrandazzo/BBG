@@ -58,12 +58,12 @@ Usage
    vim src/malebbadaemon.bash
 
 7) Copy into fail2ban the filter and the jail:
-   cp src/fail2ban/filter.d/malebba.conf /etc/fail2ban/filter.d/bbg.conf
-   cp src/fail2ban/jail.d/malebba.conf /etc/fail2ban/jail.d/bbg.conf
+   cp src/fail2ban/filter.d/malebba.conf /etc/fail2ban/filter.d/malebba.conf
+   cp src/fail2ban/jail.d/malebba.conf /etc/fail2ban/jail.d/malebba.conf
    Modify the jail using your preferred parameters.
   
 8) Copy the systemd service file and modify the MALEBBA path
-   cp src/systemd/system/malebba.service /etc/systemd/system/bbg.service
+   cp src/systemd/system/malebba.service /etc/systemd/system/malebba.service
    vim /etc/systemd/system/malebba.service
 
 9) Install the systemd services and run it.
@@ -75,4 +75,10 @@ Developer
 =========
 Giuseppe Marco "zeld" Randazzo <gmrandazzo AT gmail DOT com>
 
+
+Acknowledgement
+===============
+
+Special thanks to Katolaz, Eriol, Nightolo for their comments regarding safety issues and advice on the daemon implementation. 
++Katolaz for the software name advice! I really like it!
 
