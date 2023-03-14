@@ -65,20 +65,14 @@ def parse_nginx_line_(line):
     while i < len(v):
         if len(v) > 1:
             if v[i][0] == '"' and v[i][-1] != '"':
-                # print("first char is \" on %s" % (v[i]))
                 buff = v[i]
                 for j in range(i+1, len(v)):
                     if v[j][-1] == '"':
                         buff += " "+v[j]
-                        # print("add %s and stop" % (v[j]))
                         i = j+1
                         break
                     else:
                         buff += " "+v[j]
-                        # print("add %s " % (v[j]))
-                # print("Final buffer")
-                # print(buff)
-                # input()
                 splits.append(buff)
             else:
                 if v[i][0] == '[' and v[i+1][-1] == ']':
@@ -184,4 +178,4 @@ def demo():
 
 if __name__ in "__main__":
     main()
-    # demo()
+    # sdemo()

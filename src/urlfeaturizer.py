@@ -24,10 +24,10 @@ from cosine import get_cosine
 
 class UrlFeaturizer(object):
     def __init__(self,
-                 allowed_url_file="allowed_urls.txt",
-                 disallowed_url_file="disallowed_urls.txt"):
-        self.allowed_urls = self.readurlfile(allowed_url_file)
-        self.disallowed_urls = self.readurlfile(disallowed_url_file)
+                 urls_enabled_file="urls_allowed.txt",
+                 urls_disabled_file="urls_disabled.txt"):
+        self.urls_enabled = self.readurlfile(urls_enabled_file)
+        self.urls_disabled = self.readurlfile(urls_disabled_file)
 
     def readurlfile(self, furls):
         lst = []
@@ -80,12 +80,12 @@ class UrlFeaturizer(object):
         fvect = {}
         v1 = text_to_vector(url)
         i = 0
-        for aurl in self.allowed_urls:
+        for aurl in self.urls_enabled:
             v2 = text_to_vector(aurl)
             fvect["fvect_AURL%.4d" % (i)] = get_cosine(v1, v2)
             i += 1
         i = 0
-        for durl in self.disallowed_urls:
+        for durl in self.urls_disabled:
             v2 = text_to_vector(durl)
             fvect["fvect_DURL%.4d" % (i)] = get_cosine(v1, v2)
             i += 1
@@ -141,6 +141,10 @@ def demo():
 
 
 def main():
+    if len(sys.argv) != 3:
+        print(f'Usage {sys.argv[0]} [CSV file] [OUTPUT file]') 
+        return
+
     d = pd.read_csv(sys.argv[1])
     fo = open(sys.argv[2], "w")
     write_header = True

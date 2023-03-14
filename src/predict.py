@@ -48,11 +48,11 @@ def predict(url, models, header):
 
 def main():
     if len(sys.argv) != 3:
-        print("\nUsage: %s [url] [model path]" % (sys.argv[0]))
+        print(f'\nUsage: {sys.argv[0]} [url] [model path]')
     else:
         models, header = load_models(sys.argv[2])
         res = predict(sys.argv[1], models, header)
-        print("%.4f %.4f" % (res["prediction"], res["stdev"]))
+        print(f'{round(res["prediction"], 4)} {round(res["stdev"], 4)}')
         return 0
 
 
